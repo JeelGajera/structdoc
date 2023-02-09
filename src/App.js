@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, { useEffect }from 'react';
 import './App.css';
+import Header from './Components/Header/Header';
+import Body from './Components/Body/Body';
 
 function App() {
+  // useEffect(() => {
+  //   const unloadCallback = (event) => {
+  //     event.preventDefault();
+  //     const message = "We dont'n save your data in any external sources. Make sure that download your resume before Reload/Leave.";
+  //     event.returnValue = message;
+  //     return message;
+  //   };
+  
+  //   window.addEventListener("beforeunload", unloadCallback);
+  //   return () => window.removeEventListener("beforeunload", unloadCallback);
+  // }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Body />
     </div>
   );
 }
