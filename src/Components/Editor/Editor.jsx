@@ -39,12 +39,12 @@ function Editor(props) {
   function calculateAverage(array) {
     var total = 0;
     var count = 0;
-    array.forEach(function(i, index) {
+    array.forEach(function (i, index) {
       total += i;
       count++;
     });
-    return total/count
-  };
+    return total / count;
+  }
 
   // Body components of editor part
   //****** basic info */
@@ -136,124 +136,6 @@ function Editor(props) {
         />
       </div>
 
-      <span>Orientation of plot</span>
-      <div className={style.row}>
-        <table>
-          <tr>
-            <th colSpan={2}>Directions</th>
-            <th>Details of features</th>
-            <th>Details of Adjoining Structure</th>
-          </tr>
-          <tr>
-            <td>North</td>
-            <td>
-              <InputControl
-                value={values.nDirection}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, nDirection: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.nDetailF}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, nDetailF: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.nDetailAS}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, nDetailAS: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>South</td>
-            <td>
-              <InputControl
-                value={values.sDirection}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, sDirection: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.sDetailF}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, sDetailF: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.sDetailAS}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, sDetailAS: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>East</td>
-            <td>
-              <InputControl
-                value={values.eDirection}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, eDirection: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.eDetailF}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, eDetailF: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.eDetailAS}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, eDetailAS: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>West</td>
-            <td>
-              <InputControl
-                value={values.wDirection}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, wDirection: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.wDetailF}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, wDetailF: event.target.value }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                value={values.wDetailAS}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, wDetailAS: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
       <span>Approx Dimensions of building</span>
       <div className={style.row}>
         <table>
@@ -262,8 +144,12 @@ function Editor(props) {
             <td>
               <InputControl
                 value={values.buildingLength}
+                placeholder="Eg. 20m"
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, buildingLength: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    buildingLength: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -271,8 +157,12 @@ function Editor(props) {
             <td>
               <InputControl
                 value={values.buildingWidth}
+                placeholder="Eg. 20m"
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, buildingWidth: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    buildingWidth: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -280,8 +170,12 @@ function Editor(props) {
             <td>
               <InputControl
                 value={values.buildingHeight}
+                placeholder="Eg. 20m"
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, buildingHeight: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    buildingHeight: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -296,7 +190,10 @@ function Editor(props) {
           accept="image/*"
           placeholder="Select Image"
           onChange={(event) =>
-            setImages((prev) => ({ ...prev, planImg: URL.createObjectURL(event.target.files[0]) }))
+            setImages((prev) => ({
+              ...prev,
+              planImg: URL.createObjectURL(event.target.files[0]),
+            }))
           }
         />
         <InputControl
@@ -331,7 +228,10 @@ function Editor(props) {
           label="Failure of adjoining structure, if any"
           value={values.failureAdjoining}
           onChange={(event) =>
-            setVelues((prev) => ({ ...prev, failureAdjoining: event.target.value }))
+            setVelues((prev) => ({
+              ...prev,
+              failureAdjoining: event.target.value,
+            }))
           }
         />
       </div>
@@ -343,7 +243,10 @@ function Editor(props) {
             <InputControl
               value={values.structuralBM}
               onChange={(event) =>
-                setVelues((prev) => ({ ...prev, structuralBM: event.target.value }))
+                setVelues((prev) => ({
+                  ...prev,
+                  structuralBM: event.target.value,
+                }))
               }
             />
           </td>
@@ -354,7 +257,10 @@ function Editor(props) {
             <InputControl
               value={values.nonStructuralBM}
               onChange={(event) =>
-                setVelues((prev) => ({ ...prev, nonStructuralBM: event.target.value }))
+                setVelues((prev) => ({
+                  ...prev,
+                  nonStructuralBM: event.target.value,
+                }))
               }
             />
           </td>
@@ -365,7 +271,10 @@ function Editor(props) {
             <InputControl
               value={values.waterSupplyBM}
               onChange={(event) =>
-                setVelues((prev) => ({ ...prev, waterSupplyBM: event.target.value }))
+                setVelues((prev) => ({
+                  ...prev,
+                  waterSupplyBM: event.target.value,
+                }))
               }
             />
           </td>
@@ -583,16 +492,17 @@ function Editor(props) {
   //****** technical details */
   const techDetailBody = (
     <div className={style.detail}>
-      <div className={style.center}>
-        Upload Available Documents
-      </div>
+      <div className={style.center}>Upload Available Documents</div>
       <InputControl
         label="Plan"
         type="file"
         accept="image/*"
         placeholder="Select Image"
         onChange={(event) =>
-          setImages((prev) => ({ ...prev, planImg: URL.createObjectURL(event.target.files[0]) }))
+          setImages((prev) => ({
+            ...prev,
+            planImg: URL.createObjectURL(event.target.files[0]),
+          }))
         }
       />
       <InputControl
@@ -601,7 +511,10 @@ function Editor(props) {
         accept="image/*"
         placeholder="Select Image"
         onChange={(event) =>
-          setImages((prev) => ({ ...prev, elevationImg: URL.createObjectURL(event.target.files[0]) }))
+          setImages((prev) => ({
+            ...prev,
+            elevationImg: URL.createObjectURL(event.target.files[0]),
+          }))
         }
       />
       <InputControl
@@ -610,7 +523,10 @@ function Editor(props) {
         accept="image/*"
         placeholder="Select Image"
         onChange={(event) =>
-          setImages((prev) => ({ ...prev, crossSecImg: URL.createObjectURL(event.target.files[0]) }))
+          setImages((prev) => ({
+            ...prev,
+            crossSecImg: URL.createObjectURL(event.target.files[0]),
+          }))
         }
       />
       <InputControl
@@ -619,7 +535,10 @@ function Editor(props) {
         accept="image/*"
         placeholder="Select Image"
         onChange={(event) =>
-          setImages((prev) => ({ ...prev, struckDrawImg: URL.createObjectURL(event.target.files[0]) }))
+          setImages((prev) => ({
+            ...prev,
+            struckDrawImg: URL.createObjectURL(event.target.files[0]),
+          }))
         }
       />
       <InputControl
@@ -628,16 +547,10 @@ function Editor(props) {
         accept="image/*"
         placeholder="Select Image"
         onChange={(event) =>
-          setImages((prev) => ({ ...prev, testRepoImg: URL.createObjectURL(event.target.files[0]) }))
-        }
-      />
-      <InputControl
-        label="Any other material"
-        type="file"
-        accept="image/*"
-        placeholder="Select Image"
-        onChange={(event) =>
-          setImages((prev) => ({ ...prev, otherMatImg: URL.createObjectURL(event.target.files[0]) }))
+          setImages((prev) => ({
+            ...prev,
+            testRepoImg: URL.createObjectURL(event.target.files[0]),
+          }))
         }
       />
 
@@ -651,7 +564,10 @@ function Editor(props) {
                 placeholder="Enter Frequency"
                 value={values.waterProofingTM}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, waterProofingTM: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    waterProofingTM: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -663,7 +579,10 @@ function Editor(props) {
                 placeholder="Enter Frequency"
                 value={values.plasteringTM}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, plasteringTM: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    plasteringTM: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -675,7 +594,10 @@ function Editor(props) {
                 placeholder="Enter Frequency"
                 value={values.coloringTM}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, coloringTM: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    coloringTM: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -687,7 +609,10 @@ function Editor(props) {
                 placeholder="Enter Frequency"
                 value={values.strengtheningTM}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, strengtheningTM: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    strengtheningTM: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -699,7 +624,10 @@ function Editor(props) {
                 placeholder="Enter Frequency"
                 value={values.waterSupplyTM}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, waterSupplyTM: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    waterSupplyTM: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -711,7 +639,10 @@ function Editor(props) {
                 placeholder="Enter Frequency"
                 value={values.drainageTM}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, drainageTM: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    drainageTM: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -777,7 +708,7 @@ function Editor(props) {
             <th>Element</th>
             <th>Image</th>
             <th>Remarks</th>
-            <th>Rate of Moisture</th>
+            <th>Description</th>
           </tr>
           {/* Columns */}
           <tr>
@@ -788,7 +719,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, columnImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    columnImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -797,16 +731,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.columnRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, columnRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    columnRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.columnMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, columnMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    columnMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -820,7 +760,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, beamImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    beamImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -829,16 +772,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.beamRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, beamRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    beamRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.beamMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, beamMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    beamMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -852,7 +801,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, slabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    slabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -861,16 +813,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.slabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, slabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    slabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.slabMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, slabMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    slabMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -884,7 +842,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, lintelImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    lintelImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -893,16 +854,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.lintelRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, lintelRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    lintelRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.lintelMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, lintelMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    lintelMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -916,7 +883,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, balconyImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    balconyImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -925,16 +895,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.balconyRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, balconyRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    balconyRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.balconyMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, balconyMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    balconyMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -948,7 +924,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, exWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    exWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -957,16 +936,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.exWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, exWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    exWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.exWallMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, exWallMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    exWallMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -980,7 +965,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, inWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    inWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -989,16 +977,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.inWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, inWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    inWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.inWallMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, inWallMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    inWallMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1012,7 +1006,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, flooringImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    flooringImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1021,16 +1018,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.flooringRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, flooringRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    flooringRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.flooringMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, flooringMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    flooringMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1044,7 +1047,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, doorWinImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    doorWinImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1053,16 +1059,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.doorWinRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, doorWinRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    doorWinRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.doorWinMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, doorWinMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    doorWinMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1076,7 +1088,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairSlabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairSlabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1085,16 +1100,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairSlabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairSlabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairSlabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.stairSlabMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairSlabMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairSlabMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1108,7 +1129,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairStepImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairStepImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1117,16 +1141,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairStepRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairStepRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairStepRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.stairStepMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairStepMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairStepMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1140,7 +1170,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairRailImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairRailImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1149,16 +1182,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairRailRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairRailRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairRailRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.stairRailMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairRailMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairRailMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1172,7 +1211,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, passageImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    passageImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1181,16 +1223,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.passageRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, passageRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    passageRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.passageMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, passageMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    passageMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1208,6 +1256,7 @@ function Editor(props) {
             <th>Member/Elements</th>
             <th>Images</th>
             <th>Remark</th>
+            <th>Description</th>
           </tr>
           {/* Columns */}
           <tr>
@@ -1218,7 +1267,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, columnImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    columnImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1227,16 +1279,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.columnRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, columnRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    columnRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.columnMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, columnMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    columnMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1250,7 +1308,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, beamImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    beamImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1259,16 +1320,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.beamRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, beamRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    beamRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.beamMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, beamMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    beamMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1282,7 +1349,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, slabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    slabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1291,16 +1361,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.slabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, slabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    slabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.slabMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, slabMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    slabMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1314,7 +1390,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, lintelImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    lintelImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1323,16 +1402,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.lintelRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, lintelRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    lintelRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.lintelMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, lintelMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    lintelMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1346,7 +1431,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, balconyImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    balconyImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1355,16 +1443,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.balconyRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, balconyRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    balconyRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.balconyMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, balconyMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    balconyMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1378,7 +1472,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, exWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    exWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1387,16 +1484,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.exWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, exWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    exWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.exWallMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, exWallMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    exWallMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1410,7 +1513,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, inWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    inWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1419,16 +1525,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.inWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, inWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    inWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.inWallMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, inWallMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    inWallMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1442,7 +1554,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, flooringImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    flooringImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1451,16 +1566,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.flooringRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, flooringRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    flooringRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.flooringMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, flooringMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    flooringMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1474,7 +1595,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, doorWinImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    doorWinImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1483,16 +1607,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.doorWinRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, doorWinRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    doorWinRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.doorWinMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, doorWinMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    doorWinMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1506,7 +1636,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairSlabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairSlabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1515,16 +1648,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairSlabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairSlabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairSlabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.stairSlabMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairSlabMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairSlabMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1538,7 +1677,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairStepImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairStepImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1547,16 +1689,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairStepRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairStepRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairStepRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.stairStepMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairStepMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairStepMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1570,7 +1718,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairRailImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairRailImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1579,16 +1730,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairRailRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairRailRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairRailRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.stairRailMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairRailMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairRailMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1602,7 +1759,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, passageImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    passageImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1611,16 +1771,22 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.passageRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, passageRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    passageRemark: event.target.value,
+                  }))
                 }
               />
             </td>
             <td>
               <InputControl
-                placeholder="Enter rate"
+                placeholder="Enter Description"
                 value={values.passageMoisture}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, passageMoisture: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    passageMoisture: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1639,98 +1805,9 @@ function Editor(props) {
             <th>Images</th>
             <th>Remark</th>
           </tr>
-          {/* Columns */}
-          <tr>
-            <td>Columns</td>
-            <td>
-              <InputControl
-                type="file"
-                accept="image/*"
-                placeholder="Select Image"
-                onChange={(event) =>
-                  setImages((prev) => ({ ...prev, columnImg: URL.createObjectURL(event.target.files[0]) }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                placeholder="Enter Remarks"
-                value={values.columnRemark}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, columnRemark: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-          {/* Beams */}
-          <tr>
-            <td>Beams</td>
-            <td>
-              <InputControl
-                type="file"
-                accept="image/*"
-                placeholder="Select Image"
-                onChange={(event) =>
-                  setImages((prev) => ({ ...prev, beamImg: URL.createObjectURL(event.target.files[0]) }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                placeholder="Enter Remarks"
-                value={values.beamRemark}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, beamRemark: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-          {/* Slabs */}
-          <tr>
-            <td>Slabs</td>
-            <td>
-              <InputControl
-                type="file"
-                accept="image/*"
-                placeholder="Select Image"
-                onChange={(event) =>
-                  setImages((prev) => ({ ...prev, slabImg: URL.createObjectURL(event.target.files[0]) }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                placeholder="Enter Remarks"
-                value={values.slabRemark}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, slabRemark: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
-          {/* Lintel */}
-          <tr>
-            <td>Lintel/Chajja</td>
-            <td>
-              <InputControl
-                type="file"
-                accept="image/*"
-                placeholder="Select Image"
-                onChange={(event) =>
-                  setImages((prev) => ({ ...prev, lintelImg: URL.createObjectURL(event.target.files[0]) }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                placeholder="Enter Remarks"
-                value={values.lintelRemark}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, lintelRemark: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
+         
+          
+        
           {/* porch/canopy/balcony */}
           <tr>
             <td>porch/canopy/balcony</td>
@@ -1740,7 +1817,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, balconyImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    balconyImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1749,7 +1829,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.balconyRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, balconyRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    balconyRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1763,7 +1846,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, exWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    exWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1772,34 +1858,15 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.exWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, exWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    exWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
           </tr>
-          {/* Internal Wall */}
-          <tr>
-            <td>Internal wall</td>
-            <td>
-              <InputControl
-                type="file"
-                accept="image/*"
-                placeholder="Select Image"
-                onChange={(event) =>
-                  setImages((prev) => ({ ...prev, inWallImg: URL.createObjectURL(event.target.files[0]) }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                placeholder="Enter Remarks"
-                value={values.inWallRemark}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, inWallRemark: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
+         
           {/* Flooring */}
           <tr>
             <td>Flooring</td>
@@ -1809,7 +1876,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, flooringImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    flooringImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1818,7 +1888,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.flooringRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, flooringRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    flooringRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1832,7 +1905,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, doorWinImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    doorWinImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1841,7 +1917,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.doorWinRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, doorWinRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    doorWinRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1855,7 +1934,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairSlabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairSlabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1864,7 +1946,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairSlabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairSlabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairSlabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1878,7 +1963,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairStepImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairStepImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1887,7 +1975,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairStepRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairStepRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairStepRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1901,7 +1992,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairRailImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairRailImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1910,7 +2004,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairRailRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairRailRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairRailRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1924,7 +2021,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, passageImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    passageImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1933,7 +2033,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.passageRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, passageRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    passageRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1962,7 +2065,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, columnImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    columnImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1971,7 +2077,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.columnRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, columnRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    columnRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -1985,7 +2094,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, beamImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    beamImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -1994,7 +2106,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.beamRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, beamRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    beamRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2008,7 +2123,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, slabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    slabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2017,7 +2135,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.slabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, slabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    slabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2031,7 +2152,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, lintelImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    lintelImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2040,34 +2164,15 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.lintelRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, lintelRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    lintelRemark: event.target.value,
+                  }))
                 }
               />
             </td>
           </tr>
-          {/* porch/canopy/balcony */}
-          <tr>
-            <td>porch/canopy/balcony</td>
-            <td>
-              <InputControl
-                type="file"
-                accept="image/*"
-                placeholder="Select Image"
-                onChange={(event) =>
-                  setImages((prev) => ({ ...prev, balconyImg: URL.createObjectURL(event.target.files[0]) }))
-                }
-              />
-            </td>
-            <td>
-              <InputControl
-                placeholder="Enter Remarks"
-                value={values.balconyRemark}
-                onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, balconyRemark: event.target.value }))
-                }
-              />
-            </td>
-          </tr>
+        
           {/* External Wall */}
           <tr>
             <td>External wall</td>
@@ -2077,7 +2182,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, exWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    exWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2086,7 +2194,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.exWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, exWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    exWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2100,7 +2211,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, inWallImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    inWallImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2109,7 +2223,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.inWallRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, inWallRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    inWallRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2123,7 +2240,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, flooringImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    flooringImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2132,7 +2252,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.flooringRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, flooringRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    flooringRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2146,7 +2269,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, ventilationImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    ventilationImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2155,7 +2281,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.ventilationRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, ventilationRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    ventilationRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2169,7 +2298,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairSlabImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairSlabImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2178,7 +2310,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairSlabRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairSlabRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairSlabRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2192,7 +2327,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairStepImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairStepImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2201,7 +2339,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairStepRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairStepRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairStepRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2215,7 +2356,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, stairRailImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    stairRailImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2224,7 +2368,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.stairRailRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, stairRailRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    stairRailRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2238,7 +2385,10 @@ function Editor(props) {
                 accept="image/*"
                 placeholder="Select Image"
                 onChange={(event) =>
-                  setImages((prev) => ({ ...prev, passageImg: URL.createObjectURL(event.target.files[0]) }))
+                  setImages((prev) => ({
+                    ...prev,
+                    passageImg: URL.createObjectURL(event.target.files[0]),
+                  }))
                 }
               />
             </td>
@@ -2247,7 +2397,10 @@ function Editor(props) {
                 placeholder="Enter Remarks"
                 value={values.passageRemark}
                 onChange={(event) =>
-                  setVelues((prev) => ({ ...prev, passageRemark: event.target.value }))
+                  setVelues((prev) => ({
+                    ...prev,
+                    passageRemark: event.target.value,
+                  }))
                 }
               />
             </td>
@@ -2271,29 +2424,25 @@ function Editor(props) {
             <td>1</td>
             <td>
               <InputControl
-                onChange={(e) => 
-                  setTime(e.target.value)
-              }
-              value = { time }
+                onChange={(e) => setTime(e.target.value)}
+                value={time}
               />
             </td>
             <td>
               <InputControl
-                onChange={(e) =>
-                  setData(e.target.value)
-                }
-                value = { data }
+                onChange={(e) => setData(e.target.value)}
+                value={data}
               />
             </td>
             <td>
-              <button onClick={
-                () => {
-                  setChart((prev) => [...prev, { time: time, value: data }])
-                  setTime(0)
-                  setData(0)
-                  setVelues((prev) => ({ ...prev, graphData: chart }))
-                }
-              }>
+              <button
+                onClick={() => {
+                  setChart((prev) => [...prev, { time: time, value: data }]);
+                  setTime(0);
+                  setData(0);
+                  setVelues((prev) => ({ ...prev, graphData: chart }));
+                }}
+              >
                 Add
               </button>
             </td>
@@ -2312,29 +2461,25 @@ function Editor(props) {
             <td>1</td>
             <td>
               <InputControl
-                onChange={(e) => 
-                  setTest(e.target.value)
-              }
-              value = { test }
+                onChange={(e) => setTest(e.target.value)}
+                value={test}
               />
             </td>
             <td>
               <InputControl
-                onChange={(e) =>
-                  setPh(e.target.value)
-                }
-                value = { ph }
+                onChange={(e) => setPh(e.target.value)}
+                value={ph}
               />
             </td>
             <td>
-              <button onClick={
-                () => {
-                  setBarChart((prev) => [...prev, { test: test, ph: ph }])
-                  setTest(0)
-                  setPh(0)
-                  setVelues((prev) => ({ ...prev, bargraphData: barchart }))
-                }
-              }>
+              <button
+                onClick={() => {
+                  setBarChart((prev) => [...prev, { test: test, ph: ph }]);
+                  setTest(0);
+                  setPh(0);
+                  setVelues((prev) => ({ ...prev, bargraphData: barchart }));
+                }}
+              >
                 Add
               </button>
             </td>
@@ -2449,67 +2594,65 @@ function Editor(props) {
             <td>Walls</td>
             <td>1</td>
             <td>less than 1mm</td>
-            </tr>
-            <tr>
+          </tr>
+          <tr>
             <td>2</td>
             <td>Slab</td>
             <td>2</td>
             <td>less than 5mm</td>
-            </tr>
-            <tr>
+          </tr>
+          <tr>
             <td>3</td>
             <td>Beam</td>
             <td>3</td>
             <td>less than 15mm</td>
-            </tr>
-            <tr>
+          </tr>
+          <tr>
             <td>4</td>
             <td>Column</td>
             <td>4</td>
             <td>less than 25mm</td>
-            </tr>
-            <tr>
+          </tr>
+          <tr>
             <td>5</td>
             <td>Juction</td>
             <td>5</td>
             <td>Greater than 15mm</td>
-            </tr>
-          </table>
-          <table>
+          </tr>
+        </table>
+        <table>
           <tr>
-            
             <td>
               <InputControl
-                onChange={(e) => 
-                  setElementNo(e.target.value)
-              }
-              value = { elementNo }
+                onChange={(e) => setElementNo(e.target.value)}
+                value={elementNo}
               />
             </td>
             <td>
               <InputControl
-                onChange={(e) =>
-                  setCrackLength(e.target.value)
-                }
-                value = { crackLength }
+                onChange={(e) => setCrackLength(e.target.value)}
+                value={crackLength}
               />
             </td>
             <td>
-              <button onClick={
-                () => {
+              <button
+                onClick={() => {
                   //add element instead of time
                   // setBarChart((prev) => [...prev, { test: test, ph: ph }])
-                  setCTotal((prev) => [...prev, parseInt(elementNo)+parseInt(crackLength)])
-                  setElementNo(0)
-                  setCrackLength(0)
-                  setVelues((prev) => ({ ...prev, totalCrackValue: cTotal }))
+                  setCTotal((prev) => [
+                    ...prev,
+                    parseInt(elementNo) + parseInt(crackLength),
+                  ]);
+                  setElementNo(0);
+                  setCrackLength(0);
+                  setVelues((prev) => ({ ...prev, totalCrackValue: cTotal }));
                   // const tempDetail = {
                   //   totalCrackValue: values.totalCrackValue,
                   // }
-          
+
                   // const tempDetails = [...information[sections.cracksInfo]?.details];
                   // tempDetails[activeDetailIndex] = tempDetail;
-          
+
                   // props.setInformation((prev) => ({
                   //   ...prev,
                   //   [sections.cracksInfo] : {
@@ -2518,16 +2661,14 @@ function Editor(props) {
                   //     sectionTitle,
                   //   }
                   // }))
-                }
-              }>
+                }}
+              >
                 Add
               </button>
             </td>
           </tr>
-          
         </table>
       </div>
-      
     </div>
   );
 
@@ -2554,8 +2695,9 @@ function Editor(props) {
     }
   };
 
-
-  {/* Danger Zone */ }
+  {
+    /* Danger Zone */
+  }
   // update details & save datails in setResumeInfo --> body
   const handleSubmission = () => {
     switch (sections[activeSecKey]) {
@@ -2593,7 +2735,6 @@ function Editor(props) {
           structuralBM: values.structuralBM,
           nonStructuralBM: values.nonStructuralBM,
           waterSupplyBM: values.waterSupplyBM,
-
         };
         props.setInformation((prev) => ({
           ...prev,
@@ -2848,19 +2989,19 @@ function Editor(props) {
       case sections.crackesInfo: {
         const tempDetail = {
           totalCrackValue: values.totalCrackValue,
-        }
+        };
 
         const tempDetails = [...information[sections.cracksInfo]?.details];
         tempDetails[activeDetailIndex] = tempDetail;
 
         props.setInformation((prev) => ({
           ...prev,
-          [sections.cracksInfo] : {
+          [sections.cracksInfo]: {
             ...prev[sections.cracksInfo],
             details: tempDetails,
             sectionTitle,
-          }
-        }))
+          },
+        }));
       }
       // default: return null;
     }
@@ -2901,7 +3042,6 @@ function Editor(props) {
     setSectionTitle(sections[activeSecKey]);
     setActiveDetailIndex(0);
     setVelues({
-      
       clientName: activeInfo?.detail?.clientName || "",
       engineerName: activeInfo?.detail?.engineerName || "",
       monitoringDate: activeInfo?.detail?.monitoringDate || "",
@@ -2998,18 +3138,14 @@ function Editor(props) {
       columnMoisture: activeInfo.details
         ? activeInfo.details[0]?.columnMoisture || ""
         : "",
-      beamImg: activeInfo.details
-        ? activeInfo.details[0]?.beamImg || ""
-        : "",
+      beamImg: activeInfo.details ? activeInfo.details[0]?.beamImg || "" : "",
       beamRemark: activeInfo.details
         ? activeInfo.details[0]?.beamRemark || ""
         : "",
       beamMoisture: activeInfo.details
         ? activeInfo.details[0]?.beamMoisture || ""
         : "",
-      slabImg: activeInfo.details
-        ? activeInfo.details[0]?.slabImg || ""
-        : "",
+      slabImg: activeInfo.details ? activeInfo.details[0]?.slabImg || "" : "",
       slabRemark: activeInfo.details
         ? activeInfo.details[0]?.slabRemark || ""
         : "",
@@ -3104,15 +3240,14 @@ function Editor(props) {
       bargraphData: activeInfo?.detail?.bargraphData || "",
       // cracks
       totalCrackValue: activeInfo?.details
-      ? activeInfo.details[0]?.totalCrackValue || ""
-      : "",
+        ? activeInfo.details[0]?.totalCrackValue || ""
+        : "",
       // crackLength: activeInfo?.details
       // ? activeInfo.details[0]?.crackLength || ""
       // : "",
       // elementNo: activeInfo?.details8
       // ? activeInfo.details[0]?.elementNo || ""
       // : "",
-
     });
   }, [activeSecKey]);
 
@@ -3127,7 +3262,8 @@ function Editor(props) {
     setVelues({
       columnImg: activeInfo.details[activeDetailIndex]?.columnImg || "",
       columnRemark: activeInfo.details[activeDetailIndex]?.columnRemark || "",
-      columnMoisture: activeInfo.details[activeDetailIndex]?.columnMoisture || "",
+      columnMoisture:
+        activeInfo.details[activeDetailIndex]?.columnMoisture || "",
       beamImg: activeInfo.details[activeDetailIndex]?.beamImg || "",
       beamRemark: activeInfo.details[activeDetailIndex]?.beamRemark || "",
       beamMoisture: activeInfo.details[activeDetailIndex]?.beamMoisture || "",
@@ -3136,36 +3272,51 @@ function Editor(props) {
       slabMoisture: activeInfo.details[activeDetailIndex]?.slabMoisture || "",
       lintelImg: activeInfo.details[activeDetailIndex]?.lintelImg || "",
       lintelRemark: activeInfo.details[activeDetailIndex]?.lintelRemark || "",
-      lintelMoisture: activeInfo.details[activeDetailIndex]?.lintelMoisture || "",
+      lintelMoisture:
+        activeInfo.details[activeDetailIndex]?.lintelMoisture || "",
       balconyImg: activeInfo.details[activeDetailIndex]?.balconyImg || "",
       balconyRemark: activeInfo.details[activeDetailIndex]?.balconyRemark || "",
-      balconyMoisture: activeInfo.details[activeDetailIndex]?.balconyMoisture || "",
+      balconyMoisture:
+        activeInfo.details[activeDetailIndex]?.balconyMoisture || "",
       exWallImg: activeInfo.details[activeDetailIndex]?.exWallImg || "",
       exWallRemark: activeInfo.details[activeDetailIndex]?.exWallRemark || "",
-      exWallMoisture: activeInfo.details[activeDetailIndex]?.exWallMoisture || "",
+      exWallMoisture:
+        activeInfo.details[activeDetailIndex]?.exWallMoisture || "",
       inWallImg: activeInfo.details[activeDetailIndex]?.inWallImg || "",
       inWallRemark: activeInfo.details[activeDetailIndex]?.inWallRemark || "",
-      inWallMoisture: activeInfo.details[activeDetailIndex]?.inWallMoisture || "",
+      inWallMoisture:
+        activeInfo.details[activeDetailIndex]?.inWallMoisture || "",
       flooringImg: activeInfo.details[activeDetailIndex]?.flooringImg || "",
-      flooringRemark: activeInfo.details[activeDetailIndex]?.flooringRemark || "",
-      flooringMoisture: activeInfo.details[activeDetailIndex]?.flooringMoisture || "",
+      flooringRemark:
+        activeInfo.details[activeDetailIndex]?.flooringRemark || "",
+      flooringMoisture:
+        activeInfo.details[activeDetailIndex]?.flooringMoisture || "",
       doorWinImg: activeInfo.details[activeDetailIndex]?.doorWinImg || "",
       doorWinRemark: activeInfo.details[activeDetailIndex]?.doorWinRemark || "",
-      doorWinMoisture: activeInfo.details[activeDetailIndex]?.doorWinMoisture || "",
+      doorWinMoisture:
+        activeInfo.details[activeDetailIndex]?.doorWinMoisture || "",
       stairSlabImg: activeInfo.details[activeDetailIndex]?.stairSlabImg || "",
-      stairSlabRemark: activeInfo.details[activeDetailIndex]?.stairSlabRemark || "",
-      stairSlabMoisture: activeInfo.details[activeDetailIndex]?.stairSlabMoisture || "",
+      stairSlabRemark:
+        activeInfo.details[activeDetailIndex]?.stairSlabRemark || "",
+      stairSlabMoisture:
+        activeInfo.details[activeDetailIndex]?.stairSlabMoisture || "",
       stairStepImg: activeInfo.details[activeDetailIndex]?.stairStepImg || "",
-      stairStepRemark: activeInfo.details[activeDetailIndex]?.stairStepRemark || "",
-      stairStepMoisture: activeInfo.details[activeDetailIndex]?.stairStepMoisture || "",
+      stairStepRemark:
+        activeInfo.details[activeDetailIndex]?.stairStepRemark || "",
+      stairStepMoisture:
+        activeInfo.details[activeDetailIndex]?.stairStepMoisture || "",
       stairRailImg: activeInfo.details[activeDetailIndex]?.stairRailImg || "",
-      stairRailRemark: activeInfo.details[activeDetailIndex]?.stairRailRemark || "",
-      stairRailMoisture: activeInfo.details[activeDetailIndex]?.stairRailMoisture || "",
+      stairRailRemark:
+        activeInfo.details[activeDetailIndex]?.stairRailRemark || "",
+      stairRailMoisture:
+        activeInfo.details[activeDetailIndex]?.stairRailMoisture || "",
       passageImg: activeInfo.details[activeDetailIndex]?.passageImg || "",
       passageRemark: activeInfo.details[activeDetailIndex]?.passageRemark || "",
-      passageMoisture: activeInfo.details[activeDetailIndex]?.passageMoisture || "",
+      passageMoisture:
+        activeInfo.details[activeDetailIndex]?.passageMoisture || "",
       // crackes
-      totalCrackValue: activeInfo.details[activeDetailIndex]?.totalCrackValue || "",
+      totalCrackValue:
+        activeInfo.details[activeDetailIndex]?.totalCrackValue || "",
       // elementNo: activeInfo.details[activeDetailIndex]?.elementNo || "",
       // crackLength: activeInfo.details[activeDetailIndex]?.crackLength || "",
     });
@@ -3175,8 +3326,9 @@ function Editor(props) {
       <div className={style.header}>
         {Object.keys(sections)?.map((key) => (
           <div
-            className={`${style.section} ${activeSecKey === key ? style.active : ""
-              }`}
+            className={`${style.section} ${
+              activeSecKey === key ? style.active : ""
+            }`}
             onClick={() => setActiveSecKey(key)}
           >
             {sections[key]}
@@ -3193,24 +3345,25 @@ function Editor(props) {
         <div className={style.chips}>
           {activeInfo?.details
             ? activeInfo?.details.map((item, index) => (
-              <div
-                className={`${style.chip} ${activeDetailIndex === index ? style.active_chip : ""
+                <div
+                  className={`${style.chip} ${
+                    activeDetailIndex === index ? style.active_chip : ""
                   }`}
-                key={item.title}
-                onClick={() => setActiveDetailIndex(index)}
-              >
-                <p>
-                  {sections[activeSecKey]} {index + 1}
-                </p>
-                <XCircle
-                  className={style.chip_btn}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    handleRemoveChip(index);
-                  }}
-                />
-              </div>
-            ))
+                  key={item.title}
+                  onClick={() => setActiveDetailIndex(index)}
+                >
+                  <p>
+                    {sections[activeSecKey]} {index + 1}
+                  </p>
+                  <XCircle
+                    className={style.chip_btn}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleRemoveChip(index);
+                    }}
+                  />
+                </div>
+              ))
             : ""}
           {activeInfo?.details?.length > 0 ? (
             <div className={style.chip}>
@@ -3228,6 +3381,12 @@ function Editor(props) {
             <p>Save</p>
             <Save />
           </button>
+          {/* calculateAverage() {
+    const { values } = this.state;
+    if (values.length === 0) return 0;
+    const sum = values.reduce((acc, value) => acc + parseFloat(value), 0);
+    return sum / values.length;
+  } */}
         </div>
       </div>
     </div>

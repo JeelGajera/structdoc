@@ -80,6 +80,13 @@
     margin: .5rem 0;
 }
 
+.titleName {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color);
+    margin: 1rem;
+}
+
 .direction {
     text-align: left;
 }
