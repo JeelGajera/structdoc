@@ -13,7 +13,9 @@ function Body() {
         floors: "Floor Details",
         terraceFloor: "Terrace floor",
         basementInfo: "Basement",
-        foundationInfo: "Foundation Type"
+        foundationInfo: "Foundation Type",
+        cracksInfo: "Cracks Info"
+
     };
     const defaultcolor = '#226291';
     const [activeColor, setActiveColor] = useState(defaultcolor);
@@ -56,6 +58,11 @@ function Body() {
             sectionTitle: sections.foundationInfo,
             detail: {},
         },
+        [sections.cracksInfo] : {
+            id: sections.cracksInfo,
+            sectionTitle: sections.cracksInfo,
+            details: []
+        }
     });
 
     useEffect(() => {

@@ -27,11 +27,24 @@ function Editor(props) {
   // const [chartData, setChartData] = useState([]);
 
   const [time, setTime] = useState(0);
+  const [cTotal, setCTotal] = useState([]);
+  const [crackLength, setCrackLength] = useState(0);
+  const [elementNo, setElementNo] = useState(0);
   const [data, setData] = useState(0);
-  const [chart, setChart] = useState([]);
+  const [chart, setChart] = useState([{}]);
   const [test, setTest] = useState(0);
   const [ph, setPh] = useState(0);
   const [barchart, setBarChart] = useState([]);
+
+  function calculateAverage(array) {
+    var total = 0;
+    var count = 0;
+    array.forEach(function(i, index) {
+      total += i;
+      count++;
+    });
+    return total/count
+  };
 
   // Body components of editor part
   //****** basic info */
@@ -2420,6 +2433,104 @@ function Editor(props) {
     </div>
   );
 
+  const cracksBody = (
+    <div className={style.detail}>
+      <label>Cracks Data</label>
+      <div className={style.row}>
+        <table align="center">
+          <tr>
+            <th>No.</th>
+            <th>Structural Element</th>
+            <th>No.</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Walls</td>
+            <td>1</td>
+            <td>less than 1mm</td>
+            </tr>
+            <tr>
+            <td>2</td>
+            <td>Slab</td>
+            <td>2</td>
+            <td>less than 5mm</td>
+            </tr>
+            <tr>
+            <td>3</td>
+            <td>Beam</td>
+            <td>3</td>
+            <td>less than 15mm</td>
+            </tr>
+            <tr>
+            <td>4</td>
+            <td>Column</td>
+            <td>4</td>
+            <td>less than 25mm</td>
+            </tr>
+            <tr>
+            <td>5</td>
+            <td>Juction</td>
+            <td>5</td>
+            <td>Greater than 15mm</td>
+            </tr>
+          </table>
+          <table>
+          <tr>
+            
+            <td>
+              <InputControl
+                onChange={(e) => 
+                  setElementNo(e.target.value)
+              }
+              value = { elementNo }
+              />
+            </td>
+            <td>
+              <InputControl
+                onChange={(e) =>
+                  setCrackLength(e.target.value)
+                }
+                value = { crackLength }
+              />
+            </td>
+            <td>
+              <button onClick={
+                () => {
+                  //add element instead of time
+                  // setBarChart((prev) => [...prev, { test: test, ph: ph }])
+                  setCTotal((prev) => [...prev, parseInt(elementNo)+parseInt(crackLength)])
+                  setElementNo(0)
+                  setCrackLength(0)
+                  setVelues((prev) => ({ ...prev, totalCrackValue: cTotal }))
+                  // const tempDetail = {
+                  //   totalCrackValue: values.totalCrackValue,
+                  // }
+          
+                  // const tempDetails = [...information[sections.cracksInfo]?.details];
+                  // tempDetails[activeDetailIndex] = tempDetail;
+          
+                  // props.setInformation((prev) => ({
+                  //   ...prev,
+                  //   [sections.cracksInfo] : {
+                  //     ...prev[sections.cracksInfo],
+                  //     details: tempDetails,
+                  //     sectionTitle,
+                  //   }
+                  // }))
+                }
+              }>
+                Add
+              </button>
+            </td>
+          </tr>
+          
+        </table>
+      </div>
+      
+    </div>
+  );
+
   const generateBody = () => {
     switch (sections[activeSecKey]) {
       case sections.basicInfo:
@@ -2436,6 +2547,8 @@ function Editor(props) {
         return basementBody;
       case sections.foundationInfo:
         return foundationBody;
+      case sections.cracksInfo:
+        return cracksBody;
       default:
         return null;
     }
@@ -2732,6 +2845,23 @@ function Editor(props) {
         }));
         break;
       }
+      case sections.crackesInfo: {
+        const tempDetail = {
+          totalCrackValue: values.totalCrackValue,
+        }
+
+        const tempDetails = [...information[sections.cracksInfo]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.cracksInfo] : {
+            ...prev[sections.cracksInfo],
+            details: tempDetails,
+            sectionTitle,
+          }
+        }))
+      }
       // default: return null;
     }
   };
@@ -2771,8 +2901,7 @@ function Editor(props) {
     setSectionTitle(sections[activeSecKey]);
     setActiveDetailIndex(0);
     setVelues({
-      graphData: activeInfo?.detail?.graphData || "",
-      bargraphData: activeInfo?.detail?.bargraphData || "",
+      
       clientName: activeInfo?.detail?.clientName || "",
       engineerName: activeInfo?.detail?.engineerName || "",
       monitoringDate: activeInfo?.detail?.monitoringDate || "",
@@ -2971,6 +3100,18 @@ function Editor(props) {
       objective: activeInfo.detail?.objective || "",
       condition: activeInfo.detail?.condition || "",
       suggestion: activeInfo.detail?.suggestion || "",
+      graphData: activeInfo?.detail?.graphData || "",
+      bargraphData: activeInfo?.detail?.bargraphData || "",
+      // cracks
+      totalCrackValue: activeInfo?.details
+      ? activeInfo.details[0]?.totalCrackValue || ""
+      : "",
+      // crackLength: activeInfo?.details
+      // ? activeInfo.details[0]?.crackLength || ""
+      // : "",
+      // elementNo: activeInfo?.details8
+      // ? activeInfo.details[0]?.elementNo || ""
+      // : "",
 
     });
   }, [activeSecKey]);
@@ -3023,6 +3164,10 @@ function Editor(props) {
       passageImg: activeInfo.details[activeDetailIndex]?.passageImg || "",
       passageRemark: activeInfo.details[activeDetailIndex]?.passageRemark || "",
       passageMoisture: activeInfo.details[activeDetailIndex]?.passageMoisture || "",
+      // crackes
+      totalCrackValue: activeInfo.details[activeDetailIndex]?.totalCrackValue || "",
+      // elementNo: activeInfo.details[activeDetailIndex]?.elementNo || "",
+      // crackLength: activeInfo.details[activeDetailIndex]?.crackLength || "",
     });
   }, [activeDetailIndex]);
   return (
@@ -3055,7 +3200,7 @@ function Editor(props) {
                 onClick={() => setActiveDetailIndex(index)}
               >
                 <p>
-                  {sections[activeSecKey] == 'Floor Details' ? "Floor" : sections[activeSecKey]} {index + 1}
+                  {sections[activeSecKey]} {index + 1}
                 </p>
                 <XCircle
                   className={style.chip_btn}
@@ -3077,6 +3222,7 @@ function Editor(props) {
           )}
         </div>
         {generateBody()}
+        {values.totalCrackValue}
         <div className={style.savebtn}>
           <button className={style.save} onClick={handleSubmission}>
             <p>Save</p>
