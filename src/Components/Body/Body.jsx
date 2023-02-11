@@ -36,7 +36,7 @@ function Body() {
         [sections.groundFloor]: {
             id: sections.groundFloor,
             sectionTitle: sections.groundFloor,
-            detail: {},
+            details: [],
         },
         [sections.floors]: {
             id: sections.floors,
@@ -61,7 +61,7 @@ function Body() {
         [sections.cracksInfo] : {
             id: sections.cracksInfo,
             sectionTitle: sections.cracksInfo,
-            details: []
+            detail: {}
         }
     });
 
